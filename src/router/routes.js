@@ -4,14 +4,14 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Login.vue') }
+      { path: '', component: () => import('components/Login.vue') }
     ]
   },
   {
     path: '/chat',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Chat.vue') }
+      { path: '', component: () => import('components/Chat/ChatContainer.vue') }
     ]
   }
 ]
@@ -20,7 +20,7 @@ const routes = [
 if (process.env.MODE !== 'ssr') {
   routes.push({
     path: '*',
-    component: () => import('pages/Error404.vue')
+    component: () => import('components/Error404.vue')
   })
 }
 

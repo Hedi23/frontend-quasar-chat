@@ -9,14 +9,30 @@ const { service, auth, FeathersVuex } = feathersVuex(feathersClient, {
 Vue.use(Vuex)
 Vue.use(FeathersVuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   plugins: [
-    service('users'),
-    service('messages'),
-
+    service('users', {
+      addOnUpsert: true,
+      replaceItems: true,
+      idField: '_id',
+      instanceDefaults: {
+        email: '',
+        password: ''
+      }
+    }),
+    service('messages', {
+      addOnUpsert: true,
+      replaceItems: true,
+      idField: '_id',
+      instanceDefaults: {
+        message: '',
+        userId: ''
+      }
+    }),
     auth({
       userService: 'users'
     })
   ],
   state: {}
 })
+export default store
