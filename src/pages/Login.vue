@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-12 q-pa-sm">
                     <q-input
-                        v-model="login"
-                        float-label="Login"
-                        placeholder="Enter login"
+                        v-model="email"
+                        float-label="Email"
+                        placeholder="Enter Email"
                     />
                 </div>
                 <div class="col-12 q-pa-sm">
@@ -24,10 +24,10 @@
         <div class="col-sm-10 offset-sm-1 col-md-6 offset-md-3 q-pt-lg">
             <div class="row">
                 <div class="col-6 q-pa-sm">
-                    <q-btn label="login" />
+                    <q-btn  @click="login" label="login" />
                 </div>
                 <div class="col-6 q-pa-sm">
-                    <q-btn label="signup" />
+                    <q-btn @click="signup" label="signup" />
                 </div>
             </div>
         </div>
@@ -39,11 +39,19 @@
 
 <script>
 export default {
-  name: 'PageIndex',
+  name: 'PageLogin',
   data () {
     return {
-      login: '',
+      email: '',
       password: ''
+    }
+  },
+  methods: {
+    login () {
+      console.log('Login')
+    },
+    signup () {
+      console.log('Signup')
     }
   }
 }
